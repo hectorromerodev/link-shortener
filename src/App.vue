@@ -1,19 +1,29 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
+import UrlShortener from './components/UrlShortener.vue';
+import HeaderComponent from './components/HeaderComponent.vue';
 
+</script>
+ 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HeaderComponent 
+        title="Simple Link Shortener" 
+        description="A simple to use app to short your long url to be nice and share a short one. 🎉"
+        :socialMedia="{ 
+          twitter: 'hectorromerodev',
+          github: 'hectorromerodev',
+          linkedin: 'hectorromerodev',
+          email: 'hectorromerodev@gmail.com'
+        }"
+        />
     </div>
   </header>
 
   <main>
-    <TheWelcome />
+    <UrlShortener />
   </main>
 </template>
 
