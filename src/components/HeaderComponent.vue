@@ -82,13 +82,6 @@ h3 {
   color: var(--hr-primary);
 }
 
-@media (min-width: 1024px) {
-  .header h1,
-  h3 {
-    text-align: left;
-  }
-}
-
 .social-media-container {
   display: flex;
   align-items: center;
