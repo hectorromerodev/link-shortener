@@ -1,27 +1,38 @@
-# link-shortener
 
-This template should help get you started developing with Vue 3 in Vite.
+# DevProjects - Link shortener web app
 
-## Recommended IDE Setup
+This is an open source project from [DevProjects](http://www.codementor.io/projects). Feedback and questions are welcome!
+Find the project requirements here: [Link shortener website](https://www.codementor.io/projects/web/link-shortener-website-brqjanf6zq)
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Tech/framework used
 
-## Type Support for `.vue` Imports in TS
+Built with
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+- [Vue.js](https://vuejs.org/)
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Vite](https://vitejs.dev/)
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+Deployed with
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+- [vercel](https://vercel.com/)
 
-## Customize configuration
+## Features
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+- Shorten a link
+- Copy the shortened link to clipboard
 
-## Project Setup
+## Screenshots and demo
+
+[Live demo](https://link-shortener-hectorromerodev.vercel.app/)
+
+
+## Installation
+
+Customize configuration See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+### Project Setup
 
 ```sh
 pnpm install
@@ -67,27 +78,6 @@ pnpm test:e2e
 pnpm lint
 ```
 
-<!-- THIS NEEDS TO BE THE README -->
-
-# DevProjects - Link shortener website
-
-This is an open source project from [DevProjects](http://www.codementor.io/projects). Feedback and questions are welcome!
-Find the project requirements here: [Link shortener website](https://www.codementor.io/projects/web/link-shortener-website-brqjanf6zq)
-
-## Tech/framework used
-
-Built with ___
-
-## Screenshots and demo
-
-Screenshots of your app and/or a link to your live demo
-
-## Installation
-
-Instructions for other developers on how to install and run your code on their local environment.
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-Most open source projects use the MIT license. Feel free to choose whichever license you prefer.
-
