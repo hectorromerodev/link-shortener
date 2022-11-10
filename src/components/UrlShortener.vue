@@ -18,7 +18,7 @@ const createShortUrl = async () => {
       timeout: 10000,
       hideProgressBar: true,
       onClick(closeToast) {
-        longUrl.value = "https://google.com";
+        longUrl.value = "https://www.hr-webdev.com";
         closeToast();
       },
       showCloseButtonOnHover: true,
@@ -88,6 +88,7 @@ const clear = () => {
   longUrl.value = "";
   shortUrl.value = "";
   isCopied.value = false;
+  isLoading.value = false;
 };
 </script>
 
