@@ -12,6 +12,19 @@ const isCopied = ref(false)
 const isLoading = ref(false)
 
 const createShortUrl = async () => {
+  if (!isValidUrl.value) {
+    toast.warning('Please enter a valid URL');
+    toast.info('Click Here See an Example', { 
+      timeout: 10000,
+      hideProgressBar: true,
+      onClick(closeToast) {
+        longUrl.value = 'https://google.com'
+        closeToast();
+      },
+      showCloseButtonOnHover: true,
+    });  
+    return;  
+  }
   isLoading.value = true
   try {
     shortUrl.value = await shortener(longUrl.value);
@@ -51,6 +64,7 @@ const shortener = async (url: string) => {
     .then(response => {
       if (response.ok) {
         toast.success('Url shortened successfully');
+        clear();
         return response.json()
       } else {
         throw new Error('Something went wrong, please try again later');
@@ -59,30 +73,40 @@ const shortener = async (url: string) => {
     .then(result => <string>result.result_url);
 }
 
+const isValidUrl = computed(() => {
+  const validUrl: RegExp = /^(https):\/\/[^ "]+$/;
+  return longUrl.value && validUrl.test(longUrl.value);
+})
+
+const clear = () => {
+  longUrl.value = ''
+  shortUrl.value = ''
+  isCopied.value = false
+}
+
 </script>
 
 <template>
   <div class="container">
     <div class="form">
       <input type="text" placeholder="https://" v-model="longUrl"/>
-      <button type="button" @click="createShortUrl()">
-        <template v-if="isLoading">
-          <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-          <span class="visually-hidden">Loading...</span>
-        </template>
-        <template v-else>
-          Shorten
-        </template>
+      <button class="short-btn" type="button" @click="createShortUrl()">
+        <span v-if="isLoading">LOADING...</span>
+        <span v-else>SHORT</span>
       </button>
     </div>
     <div class="result">
       <span v-if="shortUrl" class="url">{{ shortUrl }}</span>
-      <button v-if="shortUrl" type="button" @click="copyShortUrl"> {{ isCopied ? 'copied' : 'copy'}}  </button>
+      <button class="copy-btn" v-if="shortUrl" type="button" @click="copyShortUrl"> 
+        <span v-if="isCopied">COPIED</span>
+        <span v-else>COPY</span>
+      </button>
     </div>
   </div>
 </template>
 
 <style scoped>
+@import '../assets/base.css';
 
 .container {
   display: flex;
@@ -91,31 +115,26 @@ const shortener = async (url: string) => {
   justify-content: center;
   gap: 2rem;
   margin: 4rem 0;
-}
+} 
 
 .form {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .form input {
-  width: 30rem;
+  width: 20rem;
   height: 3rem;
   border: 1px solid var(--color-border);
-  border-radius: 0.3rem;
+  border-radius: 0.5rem;
   padding: 0 1rem;
-}
-
-.form button {
-  width: 10rem;
-  height: 3rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.3rem;
-  background: var(--color-primary);
-  color: var(--color-text);
-  font-weight: 500;
+  background: var(--color-background-soft);
+  box-shadow: 15px 15px 30px var(--color-background-mute),
+    -15px -15px 30px var(--color-background);
+  
 }
 
 .result {
@@ -131,26 +150,70 @@ const shortener = async (url: string) => {
   font-weight: 500;
 }
 
-.result button {
-  width: 10rem;
-  height: 3rem;
-  border: 1px solid var(--color-border);
-  border-radius: 0.3rem;
-  background: var(--color-primary);
-  color: var(--color-text);
-  font-weight: 500;
+button.short-btn{
+  text-decoration: none;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: #fff;
+  width: 9em;
+  height: 3em;
+  line-height: 2em;
+  text-align: center;
+  background: linear-gradient(90deg, var(--hr-accent), var(--hr-primary), var(--hr-complement), var(--hr-secondary));
+  background-size: 300%;
+  border-radius: 30px;
+  z-index: 1;
 }
 
-.spinner-border {
-  width: 1rem;
-  height: 1rem;
-  vertical-align: text-bottom;
+button.short-btn:hover {
+  animation: ani 8s linear infinite;
+  border: none;
 }
 
-.spinner-border-sm {
-  width: 1rem;
-  height: 1rem;
-  border-width: 0.2em;
+@keyframes ani {
+  0% {
+    background-position: 0%;
+  }
+
+  100% {
+    background-position: 200%;
+  }
 }
 
+button.short-btn:before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg, var(--hr-accent), var(--hr-primary), var(--hr-complement), var(--hr-secondary));
+  background-size: 200%;
+  border-radius: 35px;
+  transition: 1s;
+}
+
+button.short-btn:hover::before {
+  filter: blur(20px); 
+}
+
+button.short-btn:active {
+  background: linear-gradient(32deg,  var(--hr-accent), var(--hr-primary), var(--hr-complement), var(--hr-secondary));
+}
+
+button.copy-btn{
+  text-decoration: none;
+  border: none;
+  font-size: 14px;
+  font-family: inherit;
+  color: #fff;
+  width: 9em;
+  height: 3em;
+  line-height: 2em;
+  text-align: center;
+  background: var(--hr-complement);
+  border-radius: .5rem;
+}
 </style>
