@@ -11,19 +11,21 @@
   --hr-primary: #1c41ab;
   --hr-primary-rgba: rgba(28, 65, 171, .2);
   --hr-accent: #305dfc;
+  --hr-accent-rgba: rgba(48, 93, 252, .2);
   --hr-secondary: #7674d1;
   --hr-complement: #f29d7a;
+  --hr-complement-rgba: rgba(242, 157, 122, .2 );
 
-  --divider-light-1: rgba(60, 60, 60, 0.29);
-  --divider-light-2: rgba(60, 60, 60, 0.12);
-  --divider-dark-1: rgba(84, 84, 84, 0.65);
-  --divider-dark-2: rgba(84, 84, 84, 0.48);
+  --divider-light-1: rgba(28, 65, 171, 0.29);
+  --divider-light-2: rgba(28, 65, 171, 0.12);
+  --divider-dark-1: rgba(48, 93, 252, 0.65);
+  --divider-dark-2: rgba(48, 93, 252, 0.48);
 
-  --text-light-1: var(--hr-primary);
-  --text-light-2: rgba(60, 60, 60, 0.66);
+  --text-light-1: var(--hr-complement);
+  --text-light-2: rgba(242, 157, 122, 0.66);
   --text-dark-1: var(--white);
   --text-dark-2: rgba(235, 235, 235, 0.64);
-}
+} 
 
 /* semantic color variables for this project */
 :root {
@@ -31,6 +33,10 @@
   --color-background-soft: var(--white-soft);
   --color-background-mute: var(--white-mute);
 
+  --color-primary: var(--hr-primary);
+  --color-accent: var(--hr-accent);
+  --color-complement: var(var(--hr-complement));
+ 
   --color-border: var(--divider-light-2);
   --color-border-hover: var(--divider-light-1);
 
