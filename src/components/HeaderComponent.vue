@@ -16,6 +16,8 @@ defineProps<{
     <h1>{{ title }}</h1>
     <h3 class="description">{{ description }}</h3>
     <div class="social-media-container">
+      <h4 class="social-media-header"
+        v-if="socialMedia?.twitter || socialMedia?.github || socialMedia?.linkedin || socialMedia?.email">Feedback on:</h4>
       <div class="social-media" v-if="socialMedia?.twitter">
         <a
           :href="'https://twitter.com/' + socialMedia.twitter"
@@ -55,6 +57,11 @@ defineProps<{
 <style scoped>
 @import "../assets/base.css";
 
+.social-media-header {
+  display: block;
+  margin: 0.5rem 0;
+  color: var(--hr-accent);
+}
 .header h1 {
   font-weight: 500;
   font-size: 2.6rem;
@@ -88,6 +95,7 @@ h3 {
   justify-content: center;
   gap: 1rem;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 .social-media a {
