@@ -1,39 +1,59 @@
 <script setup lang="ts">
 defineProps<{
-  title: string,
-  description: string,
+  title: string;
+  description: string;
   socialMedia?: {
-    twitter?: string,
-    github?: string,
-    linkedin?: string,
-    email?: string
-  }
+    twitter?: string;
+    github?: string;
+    linkedin?: string;
+    email?: string;
+  };
 }>();
 </script>
 
 <template>
   <div class="header">
     <h1>{{ title }}</h1>
-    <h3 class="description">{{description}}</h3>
+    <h3 class="description">{{ description }}</h3>
     <div class="social-media-container">
-      <div class="social-media" v-if="socialMedia?.twitter" >
-        <a :href="'https://twitter.com/' + socialMedia.twitter" target="_blank" rel="noopener">Twitter</a>
+      <div class="social-media" v-if="socialMedia?.twitter">
+        <a
+          :href="'https://twitter.com/' + socialMedia.twitter"
+          target="_blank"
+          rel="noopener"
+          >Twitter</a
+        >
       </div>
       <div class="social-media" v-if="socialMedia?.github">
-        <a :href="'https://github.com/' + socialMedia.github" target="_blank" rel="noopener">Github</a>
+        <a
+          :href="'https://github.com/' + socialMedia.github"
+          target="_blank"
+          rel="noopener"
+          >Github</a
+        >
       </div>
       <div class="social-media" v-if="socialMedia?.linkedin">
-        <a :href="'https://linkedin.com/in/' + socialMedia.linkedin" target="_blank" rel="noopener">LinkedIn</a>
+        <a
+          :href="'https://linkedin.com/in/' + socialMedia.linkedin"
+          target="_blank"
+          rel="noopener"
+          >LinkedIn</a
+        >
       </div>
       <div class="social-media" v-if="socialMedia?.email">
-        <a :href="'mailto:' + socialMedia.email" target="_blank" rel="noopener">{{socialMedia.email}}</a>
+        <a
+          :href="'mailto:' + socialMedia.email"
+          target="_blank"
+          rel="noopener"
+          >{{ socialMedia.email }}</a
+        >
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import '../assets/base.css';
+@import "../assets/base.css";
 
 .header h1 {
   font-weight: 500;
@@ -46,7 +66,8 @@ defineProps<{
   font-size: 1.2rem;
 }
 
-.header h1, h3 {
+.header h1,
+h3 {
   text-align: center;
 }
 
@@ -55,7 +76,8 @@ defineProps<{
 }
 
 @media (min-width: 1024px) {
-  .header h1, h3 {
+  .header h1,
+  h3 {
     text-align: left;
   }
 }
